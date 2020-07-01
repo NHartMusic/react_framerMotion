@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { Route, Switch } from "react-router-dom";
-import Header from './components/Header';
-import Home from './components/Home';
-import Base from './components/Base';
-import Toppings from './components/Toppings';
-import Order from './components/Order';
+import React, { useState } from 'react'
+import { Route, Switch } from "react-router-dom"
+import Header from './components/Header'
+import Home from './components/Home'
+import Species from './components/Species'
+import Toppings from './components/Toppings'
+import Order from './components/Order'
 
 function App() {
-  const [pizza, setPizza] = useState({ base: "", toppings: [] });
+  const [pizza, setPizza] = useState({ species: "", toppings: [] })
 
-  const addBase = (base) => {
-    setPizza({ ...pizza, base })
+  const addSpecies = (species) => {
+    setPizza({ ...pizza, species })
   }
-  
+
   const addTopping = (topping) => {
-    let newToppings;
-    if(!pizza.toppings.includes(topping)){
-      newToppings = [...pizza.toppings, topping];
+    let newToppings
+    if (!pizza.toppings.includes(topping)) {
+      newToppings = [...pizza.toppings, topping]
     } else {
-      newToppings = pizza.toppings.filter(item => item !== topping);
+      newToppings = pizza.toppings.filter(item => item !== topping)
     }
-    setPizza({ ...pizza, toppings: newToppings });
+    setPizza({ ...pizza, toppings: newToppings })
   }
 
   return (
     <>
       <Header />
       <Switch>
-        <Route path="/base">
-          <Base addBase={addBase} pizza={pizza} />
+        <Route path="/species">
+          <Species addSpecies={addSpecies} pizza={pizza} />
         </Route>
         <Route path="/toppings">
           <Toppings addTopping={addTopping} pizza={pizza} />
@@ -41,7 +41,7 @@ function App() {
         </Route>
       </Switch>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

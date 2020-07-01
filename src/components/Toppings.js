@@ -1,20 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Toppings = ({ addTopping, pizza }) => {
-  let toppings = ['mushrooms', 'peppers', 'onions', 'olives', 'extra cheese', 'tomatoes'];
+  let toppings = ['finger bones', 'pelvic bones', 'crunchy bones', 'chewy bones', 'rat juice', 'bone bone']
 
   return (
     <div className="toppings container">
-      
-      <h3>Step 2: Choose Toppings</h3>
+
+      <h3>Step 2: Choose Your Bones</h3>
       <ul>
         {toppings.map(topping => {
-          let spanClass = pizza.toppings.includes(topping) ? 'active' : '';
+          let spanClass = pizza.toppings.includes(topping) ? 'active' : ''
           return (
-            <li key={topping} onClick={() => addTopping(topping)}>
-              <span className={spanClass}>{ topping }</span>
-            </li>
+            <motion.li key={topping} onClick={() => addTopping(topping)}
+              whileHover={{ scale: 1.3, originX: 0, color: '#D35FAE' }}
+              transition={{ type: 'spring', stiffness: '200' }}
+            >
+              <span className={spanClass}>{topping}</span>
+            </motion.li>
           )
         })}
       </ul>
@@ -29,4 +33,4 @@ const Toppings = ({ addTopping, pizza }) => {
   )
 }
 
-export default Toppings;
+export default Toppings
