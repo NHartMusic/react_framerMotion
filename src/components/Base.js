@@ -31,31 +31,31 @@ const nextVariants = {
   }
 }
 
-const Species = ({ addSpecies, pizza }) => {
+const Base = ({ addBase, pizza }) => {
   const type = ['Human Bones', 'Rat Bones', 'Jellyfish Bones', 'Ocelot Bones']
 
   return (
-    <motion.div className="species container"
+    <motion.div className="base container"
       variants={containerVariants}
       initial='hidden'
       animate='visible'
     >
-      <h3>Step 1: Choose your Species</h3>
+      <h3>Step 1: Choose your base</h3>
       <ul>
-        {type.map(species => {
-          let spanClass = pizza.species === species ? 'active' : '';
+        {type.map(base => {
+          let spanClass = pizza.base === base ? 'active' : '';
           return (
-            <motion.li key={species} onClick={() => addSpecies(species)}
+            <motion.li key={base} onClick={() => addBase(base)}
               whileHover={{ scale: 1.3, originX: 0, color: '#D35FAE' }}
               transition={{ type: 'spring', stiffness: '200' }}
             >
-              <span className={spanClass}>{species}</span>
+              <span className={spanClass}>{base}</span>
             </motion.li>
           )
         })}
       </ul>
 
-      {pizza.species && (
+      {pizza.base && (
         <motion.div className="next"
           variants={nextVariants}
         >
@@ -75,4 +75,4 @@ const Species = ({ addSpecies, pizza }) => {
   )
 }
 
-export default Species
+export default Base

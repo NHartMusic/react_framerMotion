@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import { Route, Switch } from "react-router-dom"
 import Header from './components/Header'
 import Home from './components/Home'
-import Species from './components/Species'
+import Base from './components/Base'
 import Toppings from './components/Toppings'
 import Order from './components/Order'
 
 function App() {
-  const [pizza, setPizza] = useState({ species: "", toppings: [] })
+  const [pizza, setPizza] = useState({ base: "", toppings: [] })
 
-  const addSpecies = (species) => {
-    setPizza({ ...pizza, species })
+  const addBase = (base) => {
+    setPizza({ ...pizza, base })
   }
 
   const addTopping = (topping) => {
@@ -27,8 +27,8 @@ function App() {
     <>
       <Header />
       <Switch>
-        <Route path="/species">
-          <Species addSpecies={addSpecies} pizza={pizza} />
+        <Route path="/base">
+          <Base addBase={addBase} pizza={pizza} />
         </Route>
         <Route path="/toppings">
           <Toppings addTopping={addTopping} pizza={pizza} />

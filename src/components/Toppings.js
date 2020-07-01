@@ -2,11 +2,44 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100vw'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'tween',
+      delay: 0.2,
+      duration: 0.7
+    }
+  }
+}
+
+const nextVariants = {
+  hidden: {
+    x: '-100vw'
+  },
+  visible: {
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: '40'
+    }
+  }
+}
+
 const Toppings = ({ addTopping, pizza }) => {
   let toppings = ['finger bones', 'pelvic bones', 'crunchy bones', 'chewy bones', 'rat juice', 'bone bone']
 
   return (
-    <div className="toppings container">
+    <motion.div className="toppings container"
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+    >
 
       <h3>Step 2: Choose Your Bones</h3>
       <ul>
@@ -29,7 +62,7 @@ const Toppings = ({ addTopping, pizza }) => {
         </button>
       </Link>
 
-    </div>
+    </motion.div>
   )
 }
 

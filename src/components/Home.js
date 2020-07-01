@@ -13,7 +13,7 @@ const Home = () => {
       >
         The BONE CLONE ZONE
       </motion.h2>
-      <Link to="/species">
+      <Link to="/base">
         <motion.button
           whileHover={{
             scale: 1.1,
