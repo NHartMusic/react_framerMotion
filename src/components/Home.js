@@ -2,6 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
+const buttonVariants = {
+  hover: {
+    scale: [1, 1.1, 1, 1.1],
+    transition: { duration: 0.5 },
+    textShadow: "2px 0px 8px rgb(255, 255, 255)",
+    boxShadow: "0px 0px 8px rgb(255, 255, 255)"
+  }
+}
+
 const Home = () => {
   return (
     <motion.div className="home container">
@@ -15,11 +24,8 @@ const Home = () => {
       </motion.h2>
       <Link to="/base">
         <motion.button
-          whileHover={{
-            scale: 1.1,
-            textShadow: "2px 0px 8px rgb(255, 255, 255)",
-            boxShadow: "0px 0px 8px rgb(255, 255, 255)"
-          }}
+          variants={buttonVariants}
+          whileHover='hover'
           transition={{ duration: 0.3 }}
         >
           <p>Enter the Zone</p>
