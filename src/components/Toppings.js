@@ -10,65 +10,54 @@ const containerVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      type: 'tween',
-      delay: 0.2,
-      duration: 0.7
-    }
-  }
-}
-
-const nextVariants = {
-  hidden: {
-    x: '-100vw'
+    transition: { type: 'spring', delay: 0.5 }
   },
-  visible: {
-    x: 0,
-    transition: {
-      type: 'spring',
-      stiffness: '40'
-    }
+  exit: {
+    x: "-100vh",
+    transition: { ease: 'easeInOut' }
   }
 }
 
 const buttonVariants = {
   hover: {
     scale: 1.1,
-    transition: { yoyo: 5, duration: 0.5 },
-    textShadow: "2px 0px 8px rgb(255, 255, 255)",
-    boxShadow: "0px 0px 8px rgb(255, 255, 255)"
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity
+    }
   }
 }
 
 const Toppings = ({ addTopping, pizza }) => {
-  let toppings = ['finger bones', 'pelvic bones', 'crunchy bones', 'chewy bones', 'rat juice', 'bone bone']
+  let toppings = ['mushrooms', 'peppers', 'onions', 'olives', 'extra cheese', 'tomatoes']
 
   return (
     <motion.div className="toppings container"
       variants={containerVariants}
-      initial='hidden'
-      animate='visible'
+      initial="hidden"
+      animate="visible"
+      exit="exit"
     >
-
-      <h3>Step 2: Choose Your Bones</h3>
+      <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map(topping => {
           let spanClass = pizza.toppings.includes(topping) ? 'active' : ''
           return (
             <motion.li key={topping} onClick={() => addTopping(topping)}
-              whileHover={{ scale: 1.3, originX: 0, color: '#D35FAE' }}
-              transition={{ type: 'spring', stiffness: '200' }}
+              whileHover={{ scale: 1.3, originX: 0, color: '#f8e112' }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <span className={spanClass}>{topping}</span>
             </motion.li>
           )
         })}
       </ul>
-
       <Link to="/order">
         <motion.button
           variants={buttonVariants}
-          whileHover='hover'
+          whileHover="hover"
         >
           Order
         </motion.button>
