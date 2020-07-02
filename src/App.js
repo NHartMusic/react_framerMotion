@@ -1,37 +1,35 @@
-import React, { useState } from 'react'
-import { Route, Switch, useLocation } from "react-router-dom"
-import Header from './components/Header'
-import Home from './components/Home'
-import Base from './components/Base'
-import Toppings from './components/Toppings'
-import Order from './components/Order'
-//framer imports
-import { AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react';
+import { Route, Switch, useLocation } from "react-router-dom";
+import Header from './components/Header';
+import Home from './components/Home';
+import Base from './components/Base';
+import Toppings from './components/Toppings';
+import Order from './components/Order';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
-  const location = useLocation()
-  const [pizza, setPizza] = useState({ base: "", toppings: [] })
+  const location = useLocation();
+  const [pizza, setPizza] = useState({ base: "", toppings: [] });
 
   const addBase = (base) => {
     setPizza({ ...pizza, base })
   }
 
   const addTopping = (topping) => {
-    let newToppings
+    let newToppings;
     if (!pizza.toppings.includes(topping)) {
-      newToppings = [...pizza.toppings, topping]
+      newToppings = [...pizza.toppings, topping];
     } else {
-      newToppings = pizza.toppings.filter(item => item !== topping)
+      newToppings = pizza.toppings.filter(item => item !== topping);
     }
-    setPizza({ ...pizza, toppings: newToppings })
+    setPizza({ ...pizza, toppings: newToppings });
   }
 
   return (
     <>
       <Header />
-      <AnimatePresence>
-        <Switch location={location} //key={location.key}
-        >
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.key}>
           <Route path="/base">
             <Base addBase={addBase} pizza={pizza} />
           </Route>
@@ -47,7 +45,7 @@ function App() {
         </Switch>
       </AnimatePresence>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
