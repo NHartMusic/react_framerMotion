@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 
 const buttonVariants = {
   hover: {
-    scale: [1, 1.1, 1, 1.1],
-    transition: { duration: 0.5 },
+    scale: 1.1,
+    transition: { yoyo: 5, duration: 0.5 },
     textShadow: "2px 0px 8px rgb(255, 255, 255)",
     boxShadow: "0px 0px 8px rgb(255, 255, 255)"
   }

@@ -31,6 +31,15 @@ const nextVariants = {
   }
 }
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    transition: { yoyo: 5, duration: 0.5 },
+    textShadow: "2px 0px 8px rgb(255, 255, 255)",
+    boxShadow: "0px 0px 8px rgb(255, 255, 255)"
+  }
+}
+
 const Toppings = ({ addTopping, pizza }) => {
   let toppings = ['finger bones', 'pelvic bones', 'crunchy bones', 'chewy bones', 'rat juice', 'bone bone']
 
@@ -57,9 +66,12 @@ const Toppings = ({ addTopping, pizza }) => {
       </ul>
 
       <Link to="/order">
-        <button>
+        <motion.button
+          variants={buttonVariants}
+          whileHover='hover'
+        >
           Order
-        </button>
+        </motion.button>
       </Link>
 
     </motion.div>

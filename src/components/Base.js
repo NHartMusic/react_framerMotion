@@ -31,6 +31,15 @@ const nextVariants = {
   }
 }
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    transition: { yoyo: 5, duration: 0.5 },
+    textShadow: "2px 0px 8px rgb(255, 255, 255)",
+    boxShadow: "0px 0px 8px rgb(255, 255, 255)"
+  }
+}
+
 const Base = ({ addBase, pizza }) => {
   const type = ['Human Bones', 'Rat Bones', 'Jellyfish Bones', 'Ocelot Bones']
 
@@ -61,12 +70,10 @@ const Base = ({ addBase, pizza }) => {
         >
           <Link to="/toppings">
             <motion.button
-              whileHover={{
-                scale: 1.1,
-                textShadow: "2px 0px 8px rgb(255, 255, 255)",
-                boxShadow: "0px 0px 8px rgb(255, 255, 255)"
-              }}
-            >Next</motion.button>
+              variants={buttonVariants}
+              whileHover='hover'
+            >
+              Next</motion.button>
           </Link>
         </motion.div>
       )}
