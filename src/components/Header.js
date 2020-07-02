@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+
 
 const Header = () => {
   return (
@@ -22,9 +22,7 @@ const Header = () => {
         animate={{ y: -10 }}
         transition={{ delay: 0.8, duration: 0.7, type: 'spring', stiffness: '50' }}
       >
-        <Link to="/home">
-          <h1>Bone Clone Boys</h1>
-        </Link>
+        <h1>Bone Clone Boys</h1>
       </motion.div>
     </header>
   )
