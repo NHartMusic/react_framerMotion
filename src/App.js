@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Header />
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal showModal={showModal} />
       <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)}>
         <Switch location={location} key={location.key}>
           <Route path="/base">
